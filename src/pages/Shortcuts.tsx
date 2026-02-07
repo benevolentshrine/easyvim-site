@@ -25,7 +25,16 @@ function Shortcuts() {
     <div className="min-h-screen pt-32 pb-20 px-6 max-w-4xl mx-auto">
       <div className="text-center mb-16">
         <h1 className="text-5xl font-bold text-white mb-6">Master Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">Tools</span></h1>
-        <p className="text-xl text-secondary">We map the keys you already know to Neovim's powerful backend.</p>
+        <p className="text-xl text-secondary mb-12">We map the keys you already know to Neovim's powerful backend.</p>
+        
+        <div className="relative overflow-hidden rounded-xl border border-white/10 shadow-2xl max-w-2xl mx-auto group">
+           <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/50 z-10 pointer-events-none"></div>
+           <img 
+             src="/screenshots/features/shortcuts.png" 
+             alt="Visual Shortcuts Cheat Sheet" 
+             className="w-full h-auto object-cover opacity-90 group-hover:opacity-100 transition-opacity" 
+           />
+        </div>
       </div>
 
       <div className="grid gap-12">
