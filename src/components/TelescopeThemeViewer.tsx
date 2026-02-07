@@ -106,6 +106,10 @@ export function TelescopeThemeViewer({ onPreviewChange }: TelescopeThemeViewerPr
                     {theme.name}
                   </li>
                 ))}
+                {/* Implications of more themes */}
+                <li className="px-2 py-0.5 text-[#565f89] italic pl-7">
+                  ... and MANY more
+                </li>
               </ul>
             </div>
 
