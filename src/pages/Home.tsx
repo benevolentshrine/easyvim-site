@@ -1,6 +1,7 @@
-import { useState, useEffect, useRef } from 'react';
-import { Terminal, Zap, FolderTree, ChevronLeft, ChevronRight, Check, Copy } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Terminal, Zap, FolderTree, ChevronRight, Check, Copy } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { TelescopeThemeViewer } from '../components/TelescopeThemeViewer';
 
 // --- Icons (Official via CDN) ---
 const Icons = {
@@ -82,7 +83,6 @@ const FeatureRow = ({ icon, title, desc, image, reversed, isMVP }: { icon: React
 
 function Home() {
   const [copied, setCopied] = useState(false);
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     // Handle hash scroll on load/change
@@ -98,24 +98,6 @@ function Home() {
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
-
-  const scrollThemes = (direction: 'left' | 'right') => {
-    if (scrollContainerRef.current) {
-      const scrollAmount = window.innerWidth * 0.6; // Scroll by roughly 60vw
-      scrollContainerRef.current.scrollBy({
-        left: direction === 'left' ? -scrollAmount : scrollAmount,
-        behavior: 'smooth'
-      });
-    }
-  };
-
-  const themes = [
-    { name: 'One Dark', image: '/screenshots/themes/one%20dark.png' },
-    { name: 'Nightfox', image: '/screenshots/themes/nightfox.png' },
-    { name: 'Everforest', image: '/screenshots/themes/everforest.png' },
-    { name: 'Nord', image: '/screenshots/themes/nord.png' },
-    { name: 'Rose Pine', image: '/screenshots/themes/rosepine.png' },
-  ];
 
   return (
     <div className="min-h-screen selection:bg-white/20 bg-background relative">
@@ -253,53 +235,8 @@ function Home() {
         </div>
       </section>
 
-      {/* Themes Gallery Section - Horizontal Scroll */}
-      <section className="py-32 px-0 border-t border-border/30 bg-surface/30 relative">
-        <div className="max-w-[1920px] mx-auto w-full">
-          <div className="text-center mb-16 px-6">
-            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">Choose Your Vibe</h2>
-            <div className="flex items-center justify-center gap-2 text-secondary text-sm">
-                <ChevronLeft className="w-4 h-4 animate-pulse" />
-                <span>Swipe to explore</span>
-                <ChevronRight className="w-4 h-4 animate-pulse" />
-            </div>
-          </div>
-          
-          <div className="relative group/slider">
-              {/* Navigation Buttons (Desktop) */}
-              <button onClick={() => scrollThemes('left')} className="hidden md:flex absolute left-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-black/50 backdrop-blur-md border border-white/10 rounded-full items-center justify-center hover:bg-white/10 transition-colors">
-                  <ChevronLeft className="w-6 h-6 text-white" />
-              </button>
-              <button onClick={() => scrollThemes('right')} className="hidden md:flex absolute right-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-black/50 backdrop-blur-md border border-white/10 rounded-full items-center justify-center hover:bg-white/10 transition-colors">
-                  <ChevronRight className="w-6 h-6 text-white" />
-              </button>
-
-              {/* Scroll Container */}
-              <div 
-                ref={scrollContainerRef}
-                className="flex overflow-x-auto snap-x snap-mandatory gap-6 md:gap-12 px-6 md:px-[20vw] pb-12 no-scrollbar"
-              >
-                {themes.map((theme) => (
-                  <div key={theme.name} className="flex-none w-[85vw] md:w-[60vw] snap-center">
-                    <div className="relative overflow-hidden border border-white/5 bg-black/40 hover:border-white/20 transition-all duration-500 shadow-2xl">
-                        <div className="relative w-full h-auto">
-                            <img 
-                                src={theme.image} 
-                                alt={theme.name} 
-                                className="w-full h-auto object-contain" 
-                            />
-                        </div>
-                        <div className="p-6 border-t border-white/5 flex justify-between items-center bg-[#0a0a0a]">
-                            <span className="text-2xl text-white font-medium">{theme.name}</span>
-                            <div className="px-3 py-1 bg-white/5 text-xs text-secondary uppercase tracking-widest">Built-in</div>
-                        </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-          </div>
-        </div>
-      </section>
+      {/* Themes Gallery Section - Telescope Style */}
+      <TelescopeThemeViewer />
 
       <footer className="py-12 border-t border-border/50 text-center text-secondary text-sm">
         <div className="flex items-center justify-center gap-2 mb-4">
