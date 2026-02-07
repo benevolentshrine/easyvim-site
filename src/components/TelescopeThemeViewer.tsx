@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Search, ChevronRight } from 'lucide-react';
+
 
 export interface Theme {
   name: string;
