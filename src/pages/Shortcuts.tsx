@@ -26,14 +26,14 @@ function Shortcuts() {
       <div className="text-center mb-16">
         <h1 className="text-5xl font-bold text-white mb-6">Master Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">Tools</span></h1>
         <p className="text-xl text-secondary mb-12">We map the keys you already know to Neovim's powerful backend.</p>
-        
+
         <div className="relative overflow-hidden rounded-xl border border-white/10 shadow-2xl max-w-2xl mx-auto group">
-           <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/50 z-10 pointer-events-none"></div>
-           <img 
-             src="/screenshots/features/shortcuts.png" 
-             alt="Visual Shortcuts Cheat Sheet" 
-             className="w-full h-auto object-cover opacity-90 group-hover:opacity-100 transition-opacity" 
-           />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/50 z-10 pointer-events-none"></div>
+          <img
+            src="/screenshots/features/shortcuts.png"
+            alt="Visual Shortcuts Cheat Sheet"
+            className="w-full h-auto object-cover opacity-90 group-hover:opacity-100 transition-opacity"
+          />
         </div>
       </div>
 
@@ -42,89 +42,94 @@ function Shortcuts() {
         <section className="bg-surface/50 border border-white/10 rounded-2xl p-8 backdrop-blur-sm">
           <SectionTitle icon={Keyboard} title="Core Shortcuts" />
           <div className="space-y-1">
-             <ShortcutRow keys="Ctrl + S" action="Save File" />
-             <ShortcutRow keys="Ctrl + O" action="Open Folder (Native Picker)" />
-             <ShortcutRow keys="Ctrl + C" action="Copy / Stop Code" />
-             <ShortcutRow keys="Ctrl + V" action="Paste" />
-             <ShortcutRow keys="Ctrl + Z" action="Undo" />
-             <ShortcutRow keys="Ctrl + F" action="Find File (Telescope)" />
-             <ShortcutRow keys="Ctrl + H" action="Search Text in Project" />
-             <ShortcutRow keys="Ctrl + B" action="Toggle Sidebar (Neo-tree)" />
-             <ShortcutRow keys="Ctrl + \\" action="Toggle Terminal" />
-             <ShortcutRow keys="F5" action="Run Code (Python, JS, C++, etc.)" />
+            <ShortcutRow keys="Ctrl + N" action="New File (Native Dialog)" />
+            <ShortcutRow keys="Ctrl + S" action="Save File (Native for New)" />
+            <ShortcutRow keys="Ctrl + O" action="Open Folder (Native Picker)" />
+            <ShortcutRow keys="Ctrl + C" action="Copy / Stop Code" />
+            <ShortcutRow keys="Ctrl + V" action="Paste" />
+            <ShortcutRow keys="Ctrl + Z" action="Undo" />
+            <ShortcutRow keys="Ctrl + F" action="Find File (Telescope)" />
+            <ShortcutRow keys="Ctrl + H" action="Search Text in Project" />
+            <ShortcutRow keys="Ctrl + B" action="Toggle Sidebar (Neo-tree)" />
+            <ShortcutRow keys="Ctrl + \\" action="Toggle Terminal" />
+            <ShortcutRow keys="F5" action="Run Code (Python, JS, C++, etc.)" />
           </div>
         </section>
 
         {/* The Manual */}
         <div className="grid md:grid-cols-2 gap-8">
-            <section className="bg-surface/50 border border-white/10 rounded-2xl p-8 backdrop-blur-sm h-full">
-                <SectionTitle icon={FileCode} title="Files & Sidebar" />
-                <p className="text-secondary mb-4 text-sm leading-relaxed">
-                  Press <span className="text-purple-300 font-mono">Ctrl+B</span> to open the file explorer (Neo-tree).
-                </p>
-                <ul className="space-y-3">
-                  <li className="flex items-center gap-3 text-sm text-secondary">
-                    <span className="w-6 h-6 flex items-center justify-center bg-white/5 rounded text-white font-mono text-xs">a</span>
-                    Add a file or folder
-                  </li>
-                  <li className="flex items-center gap-3 text-sm text-secondary">
-                    <span className="w-6 h-6 flex items-center justify-center bg-white/5 rounded text-white font-mono text-xs">d</span>
-                    Delete selected
-                  </li>
-                  <li className="flex items-center gap-3 text-sm text-secondary">
-                    <span className="w-6 h-6 flex items-center justify-center bg-white/5 rounded text-white font-mono text-xs">r</span>
-                    Rename file
-                  </li>
-                  <li className="flex items-center gap-3 text-sm text-secondary">
-                    <span className="w-6 h-6 flex items-center justify-center bg-white/5 rounded text-white font-mono text-xs">c</span>
-                    Copy file
-                  </li>
-                  <li className="flex items-center gap-3 text-sm text-secondary">
-                    <span className="w-6 h-6 flex items-center justify-center bg-white/5 rounded text-white font-mono text-xs">m</span>
-                    Move file
-                  </li>
-                </ul>
-            </section>
+          <section className="bg-surface/50 border border-white/10 rounded-2xl p-8 backdrop-blur-sm h-full">
+            <SectionTitle icon={FileCode} title="Files & Sidebar" />
+            <p className="text-secondary mb-4 text-sm leading-relaxed">
+              Press <span className="text-purple-300 font-mono">Ctrl+B</span> to open the file explorer (Neo-tree).
+            </p>
+            <ul className="space-y-3">
+              <li className="flex items-center gap-3 text-sm text-secondary">
+                <span className="w-6 h-6 flex items-center justify-center bg-white/5 rounded text-white font-mono text-xs">Ctrl+N</span>
+                Create new file (Native Dialog)
+              </li>
+              <li className="flex items-center gap-3 text-sm text-secondary">
+                <span className="w-6 h-6 flex items-center justify-center bg-white/5 rounded text-white font-mono text-xs">a</span>
+                Add a file or folder (Sidebar)
+              </li>
+              <li className="flex items-center gap-3 text-sm text-secondary">
+                <span className="w-6 h-6 flex items-center justify-center bg-white/5 rounded text-white font-mono text-xs">d</span>
+                Delete selected
+              </li>
+              <li className="flex items-center gap-3 text-sm text-secondary">
+                <span className="w-6 h-6 flex items-center justify-center bg-white/5 rounded text-white font-mono text-xs">r</span>
+                Rename file
+              </li>
+              <li className="flex items-center gap-3 text-sm text-secondary">
+                <span className="w-6 h-6 flex items-center justify-center bg-white/5 rounded text-white font-mono text-xs">c</span>
+                Copy file
+              </li>
+              <li className="flex items-center gap-3 text-sm text-secondary">
+                <span className="w-6 h-6 flex items-center justify-center bg-white/5 rounded text-white font-mono text-xs">m</span>
+                Move file
+              </li>
+            </ul>
+          </section>
 
-            <section className="bg-surface/50 border border-white/10 rounded-2xl p-8 backdrop-blur-sm h-full">
-                <SectionTitle icon={Terminal} title="Running Code" />
-                <p className="text-secondary mb-4 text-sm leading-relaxed">
-                  EasyVim detects your language automatically. No configuration needed.
-                </p>
-                <div className="space-y-4">
-                  <div className="flex gap-4 items-start">
-                    <div className="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 flex items-center justify-center text-xs font-bold mt-0.5">1</div>
-                    <p className="text-sm text-secondary">Open any Python, JS, C++, Rust, or Go file.</p>
-                  </div>
-                  <div className="flex gap-4 items-start">
-                    <div className="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 flex items-center justify-center text-xs font-bold mt-0.5">2</div>
-                    <p className="text-sm text-secondary">Press <span className="font-mono text-white">F5</span>.</p>
-                  </div>
-                   <div className="flex gap-4 items-start">
-                    <div className="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 flex items-center justify-center text-xs font-bold mt-0.5">3</div>
-                    <p className="text-sm text-secondary">It runs inside the native inbuilt terminal.</p>
-                  </div>
-                </div>
-            </section>
+          <section className="bg-surface/50 border border-white/10 rounded-2xl p-8 backdrop-blur-sm h-full">
+            <SectionTitle icon={Terminal} title="Running Code" />
+            <p className="text-secondary mb-4 text-sm leading-relaxed">
+              EasyVim detects your language automatically. No configuration needed.
+            </p>
+            <div className="space-y-4">
+              <div className="flex gap-4 items-start">
+                <div className="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 flex items-center justify-center text-xs font-bold mt-0.5">1</div>
+                <p className="text-sm text-secondary">Open any Python, JS, C++, Rust, or Go file.</p>
+              </div>
+              <div className="flex gap-4 items-start">
+                <div className="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 flex items-center justify-center text-xs font-bold mt-0.5">2</div>
+                <p className="text-sm text-secondary">Press <span className="font-mono text-white">F5</span>.</p>
+              </div>
+              <div className="flex gap-4 items-start">
+                <div className="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 flex items-center justify-center text-xs font-bold mt-0.5">3</div>
+                <p className="text-sm text-secondary">It runs inside the native inbuilt terminal.</p>
+              </div>
+            </div>
+          </section>
         </div>
 
         {/* Aesthetics */}
         <section className="bg-gradient-to-br from-purple-900/10 to-blue-900/10 border border-white/10 rounded-2xl p-8 backdrop-blur-sm">
-             <SectionTitle icon={Monitor} title="Aesthetics & Customization" />
-             <div className="space-y-6">
-                <div>
-                   <h3 className="text-white font-bold mb-2">Theme Switcher</h3>
-                   <p className="text-secondary text-sm">
-                     Click "Theme" in the top bar to swap between Tokyo Night, Catppuccin, Kanagawa, and more. It remembers your choice!
-                   </p>
-                </div>
-                <div>
-                   <h3 className="text-white font-bold mb-2">Native GUI</h3>
-                   <p className="text-secondary text-sm">
-                     Press <span className="font-mono text-purple-300">Ctrl+O</span> to use your OS's native folder picker (Windows/Mac/Linux) instead of the command line.
-                   </p>
-                </div>
-             </div>
+          <SectionTitle icon={Monitor} title="Aesthetics & Customization" />
+          <div className="space-y-6">
+            <div>
+              <h3 className="text-white font-bold mb-2">Theme Switcher</h3>
+              <p className="text-secondary text-sm">
+                Click "Theme" in the top bar to open a <strong>Live Preview Gallery</strong> via Telescope. Scroll through installed themes to see them instantly applied before choosing.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-white font-bold mb-2">Native GUI</h3>
+              <p className="text-secondary text-sm">
+                Press <span className="font-mono text-purple-300">Ctrl+O</span> to use your OS's native folder picker (Windows/Mac/Linux) instead of the command line.
+              </p>
+            </div>
+          </div>
         </section>
       </div>
     </div>
