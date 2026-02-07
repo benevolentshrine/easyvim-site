@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Terminal, Zap, FolderTree, ChevronRight, Check, Copy } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { TelescopeThemeViewer } from '../components/TelescopeThemeViewer';
+import { TelescopeThemeViewer, type Theme } from '../components/TelescopeThemeViewer';
 
 // --- Icons (Official via CDN) ---
 const Icons = {
@@ -83,6 +83,7 @@ const FeatureRow = ({ icon, title, desc, image, reversed, isMVP }: { icon: React
 
 function Home() {
   const [copied, setCopied] = useState(false);
+  const [heroImage, setHeroImage] = useState('/screenshots/Main.png');
 
   useEffect(() => {
     // Handle hash scroll on load/change
@@ -139,7 +140,7 @@ function Home() {
              <div className="relative overflow-hidden shadow-2xl border border-white/10 group">
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/50 z-10 pointer-events-none"></div>
                 <img 
-                  src="/screenshots/Main.png" 
+                  src={heroImage} 
                   alt="EasyVim Main Interface" 
                   className="w-full h-auto object-cover transform group-hover:scale-[1.01] transition-transform duration-700" 
                 />
@@ -236,7 +237,7 @@ function Home() {
       </section>
 
       {/* Themes Gallery Section - Telescope Style */}
-      <TelescopeThemeViewer />
+      <TelescopeThemeViewer onPreviewChange={(theme: Theme) => setHeroImage(theme.image)} />
 
       <footer className="py-12 border-t border-border/50 text-center text-secondary text-sm">
         <div className="flex items-center justify-center gap-2 mb-4">

@@ -1,7 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
 import { Search, ChevronRight } from 'lucide-react';
 
-const themes = [
+export interface Theme {
+  name: string;
+  image: string;
+  description: string;
+}
+
+export const themes: Theme[] = [
   { name: 'One Dark', image: '/screenshots/themes/one%20dark.png', description: 'A dark, vivid, and colorful color scheme.' },
   { name: 'Nightfox', image: '/screenshots/themes/nightfox.png', description: 'A highly customizable theme for Neovim.' },
   { name: 'Everforest', image: '/screenshots/themes/everforest.png', description: 'A green-based nature-inspired color scheme.' },
@@ -9,7 +15,11 @@ const themes = [
   { name: 'Rose Pine', image: '/screenshots/themes/rosepine.png', description: 'Soho vibes for your code.' },
 ];
 
-export function TelescopeThemeViewer() {
+interface TelescopeThemeViewerProps {
+  onPreviewChange?: (theme: Theme) => void;
+}
+
+export function TelescopeThemeViewer({ onPreviewChange }: TelescopeThemeViewerProps) {
   const [query, setQuery] = useState('');
   const [selectedIndex, setSelectedIndex] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -18,30 +28,18 @@ export function TelescopeThemeViewer() {
     theme.name.toLowerCase().includes(query.toLowerCase())
   );
 
+  const selectedTheme = filteredThemes[selectedIndex] || themes[0];
+
+  useEffect(() => {
+    if (onPreviewChange && selectedTheme) {
+      onPreviewChange(selectedTheme);
+    }
+  }, [selectedTheme, onPreviewChange]);
+
   // Reset selection when query changes
   useEffect(() => {
     setSelectedIndex(0);
   }, [query]);
-
-  // Handle keyboard navigation
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'ArrowDown') {
-        e.preventDefault();
-        setSelectedIndex(prev => Math.min(prev + 1, filteredThemes.length - 1));
-      } else if (e.key === 'ArrowUp') {
-        e.preventDefault();
-        setSelectedIndex(prev => Math.max(prev - 1, 0));
-      } else if (e.key === 'Enter') {
-        // Maybe do something on enter? For now just visual selection.
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [filteredThemes]);
-
-  const selectedTheme = filteredThemes[selectedIndex] || themes[0];
 
   return (
     <section className="py-32 px-6 flex justify-center items-center bg-[#050505]">
